@@ -1,0 +1,134 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  background: var(--fundo-card);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-4px);
+  border-color: var(--amarelo);
+  box-shadow: var(--brilho);
+}
+
+.poster {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  background: var(--fundo-card);
+}
+
+.favorite {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+}
+
+.watched {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px 3px 6px;
+  border: 1px solid var(--azul-borda);
+  border-radius: 999px;
+  background: var(--azul);
+  color: var(--texto);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.watchedIcon {
+  width: 14px;
+  height: 14px;
+  color: var(--amarelo);
+}
+
+.info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+}
+
+.title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.link {
+  transition: color 0.2s ease;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.card:hover .link {
+  color: var(--amarelo);
+}
+
+.link:focus-visible {
+  outline: none;
+}
+
+.card:has(.link:focus-visible) {
+  outline: 2px solid var(--amarelo);
+  outline-offset: 2px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  font-size: 0.875rem;
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--amarelo);
+  font-weight: 700;
+}
+
+.star {
+  width: 16px;
+  height: 16px;
+}
+
+.year {
+  color: var(--texto-secundario);
+}
+
+/* Ações extras ficam acima do link que cobre o card */
+.footer {
+  position: relative;
+  z-index: 2;
+  margin-top: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card:hover,
+  .card:focus-within {
+    transform: none;
+  }
+}

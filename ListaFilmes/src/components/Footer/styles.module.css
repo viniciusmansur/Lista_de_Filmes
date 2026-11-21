@@ -1,0 +1,35 @@
+.footer {
+  margin-top: 56px;
+  border-top: 1px solid var(--borda);
+  background: var(--fundo-card);
+  color: var(--texto-secundario);
+  font-size: 0.875rem;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: var(--largura-maxima);
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.link {
+  width: fit-content;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.link:hover {
+  color: var(--amarelo);
+}
+
+@media (min-width: 768px) {
+  .inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+  }
+}

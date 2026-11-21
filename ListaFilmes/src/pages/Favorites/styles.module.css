@@ -1,0 +1,106 @@
+.page {
+  max-width: var(--largura-maxima);
+  margin: 0 auto;
+  padding: 24px 16px 0;
+}
+
+.title {
+  margin-bottom: 16px;
+  color: var(--amarelo);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid var(--azul-borda);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--texto);
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.filter:hover {
+  color: var(--amarelo);
+}
+
+.filterActive {
+  background: var(--azul);
+  color: var(--amarelo);
+}
+
+.filterCount {
+  min-width: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--fundo-elevado);
+  color: var(--texto);
+  font-size: 0.8125rem;
+  line-height: 22px;
+  text-align: center;
+}
+
+.watchedButton {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--azul-borda);
+  border-radius: var(--raio-pequeno);
+  background: var(--azul);
+  color: var(--texto);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.watchedButton:hover {
+  background: var(--azul-hover);
+  color: var(--amarelo);
+}
+
+/* Já assistido: botão discreto, o selo "Assistido" no pôster indica o estado */
+.watchedButtonOn {
+  background: transparent;
+  color: var(--texto-secundario);
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 64px 16px;
+  text-align: center;
+}
+
+.emptyTitle {
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+
+.emptyText {
+  margin-bottom: 8px;
+  color: var(--texto-secundario);
+}
+
+@media (min-width: 768px) {
+  .page {
+    padding: 32px 24px 0;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+}

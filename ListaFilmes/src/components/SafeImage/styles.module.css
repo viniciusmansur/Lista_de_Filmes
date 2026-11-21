@@ -1,0 +1,40 @@
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--fundo-card);
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  background: var(--fundo-card);
+  color: var(--texto-secundario);
+  text-align: center;
+  overflow: hidden;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  color: var(--amarelo);
+  opacity: 0.85;
+}
+
+.label {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}

@@ -1,19 +1,74 @@
-# React + Vite
+# Lista de Filmes
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Site para descobrir filmes recomendados, ver detalhes completos (sinopse, elenco, trailer) e montar uma lista pessoal de "filmes para assistir". Todos os dados vêm da API do [The Movie Database (TMDB)](https://www.themoviedb.org/) e a interface está em português do Brasil.
 
-Currently, two official plugins are available:
+## Recursos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Home** com as seções Populares, Mais bem avaliados e Em cartaz.
+- **Detalhes** do filme em `/filme/:id`: backdrop, nota, duração, gêneros, orçamento e receita, elenco e trailer.
+- **Busca por título** no header, com resultados em `/busca?q=termo` e botão "Carregar mais".
+- **Favoritos** em `/favoritos`, com filtro Todos / Para assistir / Assistidos e marcação de filmes assistidos. Os dados ficam no `localStorage`.
 
-## React Compiler
+## Stack
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+React 19 + Vite, JavaScript, `react-router-dom` v7, CSS Modules e `fetch` nativo. Estado dos favoritos com React Context.
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+## Instalação
 
-## Expanding the ESLint configuration
+```bash
+npm install
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+(A única dependência além do template é o roteador: `npm install react-router-dom@7`.)
+
+## Configuração do `.env`
+
+1. Crie uma conta em [themoviedb.org](https://www.themoviedb.org/) e gere o **Token de Acesso de Leitura da API (v4)** em *Configurações → API*.
+2. Copie o arquivo de exemplo e preencha o token:
+
+```bash
+cp .env.example .env
+```
+
+```
+VITE_TMDB_TOKEN=seu_token_aqui
+```
+
+3. Reinicie o servidor de desenvolvimento após alterar o `.env`. Sem o token, o site mostra uma mensagem de configuração.
+
+O `.env` está no `.gitignore` e nunca deve ser enviado ao repositório. Como o Vite embute variáveis `VITE_*` no código do navegador, o token fica visível para quem usar o site: para publicar, use um token próprio do projeto ou um proxy.
+
+## Scripts
+
+| Comando | O que faz |
+|---|---|
+| `npm run dev` | Inicia o servidor de desenvolvimento |
+| `npm run build` | Gera o build de produção em `dist/` |
+| `npm run preview` | Serve o build localmente |
+| `npm run lint` | Executa o oxlint |
+
+## Estrutura
+
+```
+src/
+├── components/   Header, SearchBar, MovieCard, MovieList, FavoriteButton,
+│                 Loader, ErrorMessage, Footer, SafeImage
+├── pages/        Home, MovieDetails, Search, Favorites, NotFound
+├── services/     tmdb.js (toda a comunicação com a API)
+├── hooks/        useFetch.js
+├── context/      FavoritesContext.jsx
+└── utils/        formatters.js
+```
+
+## Decisões de projeto
+
+- Componente extra `SafeImage`: concentra o placeholder (ícone + título) usado por pôsteres, backdrops e fotos do elenco, evitando repetir a lógica de `onError`.
+- O `index.css` também define as classes globais `.btn` (botão azul compartilhado) e `.sr-only`, além das variáveis de cor.
+- O card é clicável por um link com `::after` cobrindo a área toda, para que o botão de favorito não fique aninhado dentro de um `<a>`.
+- O trailer é escolhido entre vídeos do YouTube do tipo "Trailer", em português ou, na falta, em inglês; fora isso, a seção não aparece.
+- Sem o token configurado, o App substitui as rotas por uma mensagem de configuração.
+- Lint com oxlint, que é o linter já configurado pelo template do Vite.
+
+## Créditos
+
+Este produto usa a API do TMDB, mas não é endossado ou certificado pelo TMDB.

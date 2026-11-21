@@ -1,0 +1,28 @@
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 40px 16px;
+  color: var(--texto-secundario);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--azul);
+  border-top-color: var(--amarelo);
+  border-radius: 50%;
+  animation: girar 0.8s linear infinite;
+}
+
+.label {
+  font-size: 0.9375rem;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}

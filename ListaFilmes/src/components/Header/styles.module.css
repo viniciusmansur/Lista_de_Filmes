@@ -1,0 +1,111 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--azul);
+  box-shadow: var(--sombra);
+}
+
+/* Faixa de claquete: assinatura visual do site */
+.header::after {
+  content: "";
+  display: block;
+  height: 5px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--amarelo) 0 10px,
+    var(--fundo) 10px 20px
+  );
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "logo nav"
+    "search search";
+  align-items: center;
+  gap: 12px;
+  max-width: var(--largura-maxima);
+  margin: 0 auto;
+  padding: 12px 16px;
+}
+
+.logo {
+  grid-area: logo;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  color: var(--texto);
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+}
+
+.logo:hover {
+  color: var(--amarelo);
+}
+
+.logoIcon {
+  width: 28px;
+  height: 28px;
+  color: var(--amarelo);
+}
+
+.nav {
+  grid-area: nav;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid var(--azul-borda);
+  border-radius: 999px;
+  color: var(--texto);
+  font-weight: 600;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.navLink:hover {
+  color: var(--amarelo);
+}
+
+.navLinkActive {
+  background: color-mix(in srgb, var(--texto) 14%, transparent);
+  color: var(--amarelo);
+}
+
+.count {
+  min-width: 22px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: var(--amarelo);
+  color: var(--fundo);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 22px;
+  text-align: center;
+}
+
+.search {
+  grid-area: search;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: "logo search nav";
+    gap: 24px;
+    padding: 14px 24px;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+  }
+}

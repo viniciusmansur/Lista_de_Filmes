@@ -1,0 +1,23 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: 560px;
+  margin: 24px auto;
+  padding: 28px 20px;
+  border: 1px solid var(--borda);
+  border-left: 4px solid var(--amarelo);
+  border-radius: var(--raio);
+  background: var(--fundo-card);
+  text-align: center;
+}
+
+.title {
+  color: var(--amarelo);
+  font-size: 1.25rem;
+}
+
+.message {
+  color: var(--texto-secundario);
+}
